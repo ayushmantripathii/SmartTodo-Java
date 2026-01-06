@@ -16,13 +16,22 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return tasks;
     }
+// Creates a new task and stores it in memory
+   // Creates a new task and stores it in memory
+public Task addTask(String title, String description, LocalDate dueDate) {
 
-    public Task addTask(String title, String description, LocalDate dueDate) {
-        Task task = new Task(nextId++, title, description, false, dueDate);
-        tasks.add(task);
-        return task;
+    // 🔒 Basic validation
+    if (title == null || title.trim().isEmpty()) {
+        throw new IllegalArgumentException("Task title cannot be empty");
     }
 
+    Task task = new Task(nextId++, title, description, false, dueDate);
+    tasks.add(task);
+    return task;
+}
+
+
+// Toggles completion status of a task
     public Task toggleTask(Long id) {
         for (Task task : tasks) {
             if (task.getId().equals(id)) {
@@ -32,7 +41,7 @@ public class TaskService {
         }
         return null;
     }
-
+// Deletes a task by ID
     public boolean deleteTask(Long id) {
         return tasks.removeIf(task -> task.getId().equals(id));
     }
