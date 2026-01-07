@@ -1,4 +1,5 @@
 package com.smarttodo.backend.service;
+import com.smarttodo.backend.exception.TaskNotFoundException;
 
 import com.smarttodo.backend.model.Task;
 import org.springframework.stereotype.Service;
@@ -33,16 +34,21 @@ public Task addTask(String title, String description, LocalDate dueDate) {
 
 // Toggles completion status of a task
     public Task toggleTask(Long id) {
-        for (Task task : tasks) {
-            if (task.getId().equals(id)) {
-                task.setCompleted(!task.isCompleted());
-                return task;
-            }
+    for (Task task : tasks) {
+        if (task.getId().equals(id)) {
+            task.setCompleted(!task.isCompleted());
+            return task;
         }
-        return null;
     }
+    throw new TaskNotFoundException(id);
+}
+
 // Deletes a task by ID
-    public boolean deleteTask(Long id) {
-        return tasks.removeIf(task -> task.getId().equals(id));
+   public boolean deleteTask(Long id) {
+    boolean removed = tasks.removeIf(task -> task.getId().equals(id));
+    if (!removed) {
+        throw new TaskNotFoundException(id);
     }
+    return true;
+}
 }
