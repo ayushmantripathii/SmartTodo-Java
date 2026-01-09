@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #020617, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+/* App layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass card */
+.card {
+  width: 420px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  backdrop-filter: blur(20px);
+  border-radius: 22px;
+  padding: 2.5rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  animation: floatIn 0.8s ease;
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 0.75rem 0.8rem;
+  margin-bottom: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: #020617;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: none;
+  margin-top: 0.6rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(139,92,246,0.4);
+}
+
+/* Task list */
+ul {
+  margin-top: 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  padding: 0.75rem;
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+  transition: 0.2s ease;
+}
+
+li:hover {
+  transform: scale(1.02);
+  background: rgba(255,255,255,0.12);
+}
+
+/* Animations */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

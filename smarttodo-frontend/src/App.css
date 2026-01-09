@@ -1,0 +1,110 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+.page { height: 100vh; display: grid; place-items: center; }
+
+.card {
+  width: 440px;
+  padding: 28px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 25px 60px rgba(0,0,0,.6);
+  color: #e5e7eb;
+  animation: rise .6s ease;
+}
+
+@keyframes rise {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.subtitle { opacity: .7; margin-bottom: 12px; }
+
+.progressWrap {
+  height: 6px;
+  background: rgba(255,255,255,.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg,#6366f1,#8b5cf6);
+  transition: .4s;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.filters button {
+  flex: 1;
+  background: rgba(255,255,255,.1);
+}
+
+.filters .active { background: #6366f1; }
+
+.inputRow { display: flex; gap: 8px; margin-bottom: 14px; }
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,.08);
+  color: white;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#6366f1,#8b5cf6);
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+}
+
+button:hover { transform: scale(1.05); }
+
+.list { display: grid; gap: 10px; }
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  transition: .2s;
+}
+
+.task:hover { transform: translateX(4px); }
+
+.task.done span { text-decoration: line-through; opacity: .5; }
+
+.task.overdue { border-left: 4px solid #ef4444; }
+
+.right { display: flex; gap: 8px; }
+
+.badge {
+  font-size: 12px;
+  background: rgba(255,255,255,.12);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.del {
+  background: transparent;
+  color: #f87171;
+  font-size: 18px;
+}
+
+.footer { margin-top: 12px; text-align: center; opacity: .6; }
