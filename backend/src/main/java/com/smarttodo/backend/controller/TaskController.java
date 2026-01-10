@@ -1,6 +1,4 @@
 package com.smarttodo.backend.controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import com.smarttodo.backend.model.Task;
 import com.smarttodo.backend.service.TaskService;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +27,9 @@ public class TaskController {
     public List<Task> getTasks() {
         return service.getAllTasks();
     }
+
+
+
 
     @PostMapping
     public Task addTask(@RequestParam String title,
