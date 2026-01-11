@@ -1,56 +1,14 @@
-body {
-  background: var(--bg);
-  margin: 0;
-}
-
 .app {
   display: flex;
   min-height: 100vh;
-  color: var(--text);
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 64px;
   background: var(--bg);
 }
 
-main {
-  flex: 1;
-  padding: 2rem;
-}
-
-.add-task {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.add-task input {
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-}
-
-.add-task button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.task-board {
-  display: grid;
-  gap: 1rem;
-}
-
-.task {
-  background: var(--card);
-  padding: 1rem;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.task.done {
-  opacity: 0.6;
-  text-decoration: line-through;
+.task-section {
+  max-width: 900px;
 }

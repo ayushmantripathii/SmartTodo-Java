@@ -12,8 +12,13 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
-  const [theme, setTheme] = useState("light");
+  const [view, setView] = useState("tasks");
 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+
+  // Load user & tasks
   useEffect(() => {
     const loadUser = async () => {
       const { data } = await supabase.auth.getUser();
@@ -24,6 +29,12 @@ function App() {
     };
     loadUser();
   }, []);
+
+  // Persist theme
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const fetchTasks = async () => {
     const { data } = await supabase
@@ -60,25 +71,44 @@ function App() {
     fetchTasks();
   };
 
+  // Page filters
+  const today = new Date().toISOString().split("T")[0];
+
+  const filteredTasks = tasks.filter(task => {
+    if (view === "tasks") return !task.completed;
+    if (view === "completed") return task.completed;
+    if (view === "upcoming") {
+      if (!task.due_date) return false;
+      return !task.completed && task.due_date >= today;
+    }
+    return false;
+  });
+
   if (!user) {
     return <div className="login">Please login first</div>;
   }
 
   return (
-    <div className={`app ${theme}`}>
-      <Sidebar />
+    <div className="app">
+      <Sidebar setView={setView} />
 
-      <div className="content">
-        <Header user={user} theme={theme} setTheme={setTheme} />
-
-        <AddTask onAdd={addTask} />
-
-        <TaskBoard 
-          tasks={tasks} 
-          onToggle={toggleTask} 
-          onDelete={deleteTask} 
+      <main className="main-content">
+        <Header 
+          user={user} 
+          theme={theme} 
+          setTheme={setTheme} 
+          view={view} 
         />
-      </div>
+
+        <div className="task-section">
+          <AddTask onAdd={addTask} />
+          <TaskBoard
+            tasks={filteredTasks}
+            onToggle={toggleTask}
+            onDelete={deleteTask}
+          />
+        </div>
+      </main>
     </div>
   );
 }

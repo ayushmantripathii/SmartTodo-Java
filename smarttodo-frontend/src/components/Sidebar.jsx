@@ -1,13 +1,25 @@
-export default function Sidebar() {
+import "./Sidebar.css";
+
+function Sidebar({ setView }) {
   return (
     <aside className="sidebar">
-      <h2>🧠 Nucleus</h2>
-      <nav>
-        <p>📋 Tasks</p>
-        <p>📆 Upcoming</p>
-        <p>✅ Completed</p>
-        <p>⚙️ Settings</p>
+      <div className="logo">🧠 Nucleus</div>
+
+      <nav className="menu">
+        <button onClick={() => setView("tasks")}>
+          📋 <span>Tasks</span>
+        </button>
+
+        <button onClick={() => setView("upcoming")}>
+          🗓️ <span>Upcoming</span>
+        </button>
+
+        <button onClick={() => setView("completed")}>
+          ✅ <span>Completed</span>
+        </button>
       </nav>
     </aside>
   );
 }
+
+export default Sidebar;
