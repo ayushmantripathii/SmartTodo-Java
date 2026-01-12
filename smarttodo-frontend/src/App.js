@@ -89,18 +89,19 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <Sidebar setView={setView} />
+  <div className="app">
+    <div className="topbar">
+      <div style={{ fontWeight: 700, fontSize: 18 }}>🧠 Nucleus</div>
+      <Header user={user} theme={theme} setTheme={setTheme} view={view} />
+    </div>
 
-      <main className="main-content">
-        <Header 
-          user={user} 
-          theme={theme} 
-          setTheme={setTheme} 
-          view={view} 
-        />
+    <div className="shell">
+      <div className="nav">
+        <Sidebar setView={setView} />
+      </div>
 
-        <div className="task-section">
+      <div className="page">
+        <div className="page-inner">
           <AddTask onAdd={addTask} />
           <TaskBoard
             tasks={filteredTasks}
@@ -108,9 +109,11 @@ function App() {
             onDelete={deleteTask}
           />
         </div>
-      </main>
+      </div>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default App;
