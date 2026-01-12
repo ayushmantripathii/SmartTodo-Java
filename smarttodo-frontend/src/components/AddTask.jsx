@@ -11,20 +11,9 @@ export default function AddTask({ onAdd }) {
   };
 
   return (
-    <div className="add-task">
-      <input
-        placeholder="What needs your focus today?"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+  <div className="task-input-wrapper">
+    {/* existing AddTask content */}
+  </div>
+);
 
-      <input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-      />
-
-      <button onClick={submit}>Add Task ✨</button>
-    </div>
-  );
 }

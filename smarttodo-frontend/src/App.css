@@ -1,3 +1,5 @@
+/* Layout iteration and UI cleanup */
+
 * {
   box-sizing: border-box;
 }
@@ -11,6 +13,17 @@ body {
 .app {
   display: flex;
   height: 100vh;
+}
+/* Improve main content scrolling and spacing */
+.content {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+/* Make task input area consistent width */
+.task-input-wrapper {
+  max-width: 720px;
 }
 
 /* Sidebar */
