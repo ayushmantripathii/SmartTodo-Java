@@ -38,6 +38,11 @@ SmartTodo API is running 🚀
 All incoming HTTP requests are logged using a custom filter
 for easier debugging and monitoring during development.
 ## UI Stabilization Update — Layout & Theme foundation completed
+## 🚀 Current Features
+- Material UI based modern interface
+- Sidebar navigation
+- Add & manage tasks
+- Clean responsive layout
 
 
 
