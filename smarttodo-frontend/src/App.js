@@ -1,119 +1,37 @@
-import { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
-
-import Sidebar from "./components/Sidebar";
+import { Box } from "@mui/material";
+import { useState } from "react";
 import Header from "./components/Header";
-import AddTask from "./components/AddTask";
+import Sidebar from "./components/Sidebar";
 import TaskBoard from "./components/TaskBoard";
-
-import "./styles/theme.css";
-import "./App.css";
+import AddTask from "./components/AddTask";
 
 function App() {
-  const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
-  const [view, setView] = useState("tasks");
 
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
-
-  // Load user & tasks
-  useEffect(() => {
-    const loadUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      if (data.user) {
-        setUser(data.user);
-        fetchTasks();
-      }
-    };
-    loadUser();
-  }, []);
-
-  // Persist theme
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const fetchTasks = async () => {
-    const { data } = await supabase
-      .from("tasks")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (data) setTasks(data);
+  const addTask = (text) => {
+    setTasks([...tasks, { id: Date.now(), text, completed: false }]);
   };
 
-  const addTask = async (title, dueDate) => {
-    if (!title) return;
-
-    const { data: { user } } = await supabase.auth.getUser();
-
-    await supabase.from("tasks").insert([
-      { title, due_date: dueDate, user_id: user.id }
-    ]);
-
-    fetchTasks();
+  const toggleTask = (id) => {
+    setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
   };
 
-  const toggleTask = async (task) => {
-    await supabase
-      .from("tasks")
-      .update({ completed: !task.completed })
-      .eq("id", task.id);
-
-    fetchTasks();
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(t => t.id !== id));
   };
-
-  const deleteTask = async (id) => {
-    await supabase.from("tasks").delete().eq("id", id);
-    fetchTasks();
-  };
-
-  // Page filters
-  const today = new Date().toISOString().split("T")[0];
-
-  const filteredTasks = tasks.filter(task => {
-    if (view === "tasks") return !task.completed;
-    if (view === "completed") return task.completed;
-    if (view === "upcoming") {
-      if (!task.due_date) return false;
-      return !task.completed && task.due_date >= today;
-    }
-    return false;
-  });
-
-  if (!user) {
-    return <div className="login">Please login first</div>;
-  }
 
   return (
-  <div className="app">
-    <div className="topbar">
-      <div style={{ fontWeight: 700, fontSize: 18 }}>🧠 Nucleus</div>
-      <Header user={user} theme={theme} setTheme={setTheme} view={view} />
-    </div>
-
-    <div className="shell">
-      <div className="nav">
-        <Sidebar setView={setView} />
-      </div>
-
-      <div className="page">
-        <div className="page-inner">
+    <>
+      <Header />
+      <Box display="flex">
+        <Sidebar />
+        <Box flex={1} p={4}>
           <AddTask onAdd={addTask} />
-          <TaskBoard
-            tasks={filteredTasks}
-            onToggle={toggleTask}
-            onDelete={deleteTask}
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
+          <TaskBoard tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
+        </Box>
+      </Box>
+    </>
+  );
 }
 
 export default App;

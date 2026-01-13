@@ -1,28 +1,13 @@
-import "./Header.css";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
-function Header({ user, theme, setTheme, view }) {
-  const pageTitle =
-    view === "tasks"
-      ? "Tasks"
-      : view === "upcoming"
-      ? "Upcoming"
-      : "Completed";
-
+export default function Header() {
   return (
-    <header className="header">
-      <div>
-        <h1>{pageTitle}</h1>
-        <p>{user.email}</p>
-      </div>
-
-      <button
-        className="theme-btn"
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      >
-        {theme === "light" ? "🌞 Light" : "🌙 Dark"}
-      </button>
-    </header>
+    <AppBar position="static" color="default" elevation={1}>
+      <Toolbar>
+        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          Nucleus Tasks
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 }
-
-export default Header;
