@@ -1,5 +1,76 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  animation-play-state: running !important;
+  transition-property: all !important;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+html, body {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(120deg,
+    #a8ffea,
+    #b9f6ca,
+    #ffd6a5,
+    #ffb7b2,
+    #a8ffea);
+  background-size: 400% 400%;
+  animation: liquid 18s ease infinite;
+}
+
+@keyframes liquid {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.35), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.25), transparent 40%);
+  animation: particles 18s linear infinite;
+  pointer-events: none;
+}
+
+body::after {
+  animation-delay: -9s;
+}
+
+@keyframes particles {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes liquidFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background-size: 300% 300% !important;
+  animation: liquidFlow 18s ease infinite !important;
+}
+.glass-card {
+  will-change: transform, box-shadow, filter;
+}
+
