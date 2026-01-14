@@ -1,37 +1,46 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import TaskBoard from "./components/TaskBoard";
-import AddTask from "./components/AddTask";
+import { useEffect, useState } from "react";
+import { supabase } from "./supabaseClient";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import MainLayout from "./pages/MainLayout";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [session, setSession] = useState(null);
+  const [page, setPage] = useState("login");
+  const [loading, setLoading] = useState(true);
 
-  const addTask = (text) => {
-    setTasks([...tasks, { id: Date.now(), text, completed: false }]);
-  };
+  useEffect(() => {
+    const init = async () => {
+      const { data } = await supabase.auth.getSession();
+      setSession(data.session);
+      setLoading(false);
+    };
 
-  const toggleTask = (id) => {
-    setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
-  };
+    init();
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
-  };
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setSession(session);
+      }
+    );
 
-  return (
-    <>
-      <Header />
-      <Box display="flex">
-        <Sidebar />
-        <Box flex={1} p={4}>
-          <AddTask onAdd={addTask} />
-          <TaskBoard tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
-        </Box>
-      </Box>
-    </>
-  );
+    return () => listener.subscription.unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div className="loading-screen">Loading…</div>;
+  }
+
+  // Always start on auth screen (your requirement)
+  if (!session) {
+    return page === "signup" ? (
+      <Signup goToLogin={() => setPage("login")} />
+    ) : (
+      <Login goToSignup={() => setPage("signup")} />
+    );
+  }
+
+  return <MainLayout />;
 }
 
 export default App;

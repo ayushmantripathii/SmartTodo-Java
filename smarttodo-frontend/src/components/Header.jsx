@@ -1,13 +1,17 @@
-import ThemeToggle from "./ThemeToggle";
+import { supabase } from "../supabaseClient";
+import "./Header.css";
 
-export default function Header({ user, theme, setTheme }) {
+export default function Header() {
+  async function handleLogout() {
+    await supabase.auth.signOut();
+  }
+
   return (
-    <header className="header">
-      <div>
-        <h1>Today</h1>
-        <p>{user.email}</p>
-      </div>
-      <ThemeToggle theme={theme} setTheme={setTheme} />
-    </header>
+    <div className="header">
+      <h2>Nucleus Tasks</h2>
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
+    </div>
   );
 }
