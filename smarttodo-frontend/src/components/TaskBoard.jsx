@@ -1,22 +1,34 @@
-import TaskItem from "./TaskItem";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function TaskBoard({ tasks = [], onToggle, onDelete }) {
+export default function TaskBoard({ tasks, onToggle, onDelete }) {
   return (
-    <div className="task-board">
-      {Array.isArray(tasks) && tasks.length > 0 ? (
-        tasks.map(task => (
-          <TaskItem
+    <div className="app-page">
+      <div className="app-page-inner">
+        {tasks.map(task => (
+          <div
             key={task.id}
-            task={task}
-            onToggle={onToggle}
-            onDelete={onDelete}
-          />
-        ))
-      ) : (
-        <p style={{ padding: "1rem", color: "#777" }}>
-          No tasks yet. Add your first task ✨
-        </p>
-      )}
+            className={`task-item ${task.completed ? "done" : ""}`}
+          >
+            <div className="task-left">
+              <div className="task-check" onClick={() => onToggle(task.id)}>
+                {task.completed && <div className="check-fill" />}
+              </div>
+
+              <div className="task-title">{task.title}</div>
+            </div>
+
+          <Button
+  size="xs"
+  color="red"
+  variant="subtle"
+  onClick={() => onDelete(task.id)}
+>
+  Delete
+</Button>
+
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
