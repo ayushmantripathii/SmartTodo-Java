@@ -44,6 +44,10 @@ for easier debugging and monitoring during development.
 - Add & manage tasks
 - Clean responsive layout
 
+## Project Update
+
+- Improved frontend UI structure
+- Added task styling and layout refinements
 
 
 📌 Project is under active development.
