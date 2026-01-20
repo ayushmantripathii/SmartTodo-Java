@@ -49,5 +49,8 @@ for easier debugging and monitoring during development.
 - Improved frontend UI structure
 - Added task styling and layout refinements
 
+## Cloud Services Used
+- Supabase for authentication and database
+- Deployed with cloud-based backend services
 
 📌 Project is under active development.
