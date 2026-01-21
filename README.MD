@@ -52,5 +52,9 @@ for easier debugging and monitoring during development.
 ## Cloud Services Used
 - Supabase for authentication and database
 - Deployed with cloud-based backend services
+## Tech Stack
+- Frontend: React
+- Backend: Supabase
+- Database: PostgreSQL (Supabase)
 
 📌 Project is under active development.
