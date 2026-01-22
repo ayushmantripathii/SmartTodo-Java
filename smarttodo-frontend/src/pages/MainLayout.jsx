@@ -333,9 +333,23 @@ return {
   </Card>
 </Group>
 
-          <Title order={5} c="#d51a1a" fw={600}>
-            {sectionTitleMap[activeSection]}
-          </Title>
+        <Group position="apart" align="center">
+  <Title order={5} c="#d51a1a" fw={600}>
+    {sectionTitleMap[activeSection]}
+  </Title>
+
+  <Select
+    placeholder="Sort by"
+    data={[
+      { value: "date", label: "Due Date" },
+      { value: "priority", label: "Priority" },
+    ]}
+    radius="md"
+    size="sm"
+    w={160}
+  />
+</Group>
+
 
          {filteredTasks.map((task) => {
   const meta = formatTaskDate(task.due_date);
