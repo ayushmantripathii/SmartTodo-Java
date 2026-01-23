@@ -337,6 +337,23 @@ return {
   <Title order={5} c="#d51a1a" fw={600}>
     {sectionTitleMap[activeSection]}
   </Title>
+{filteredTasks.length === 0 && (
+  <Card
+    withBorder
+    radius="md"
+    p="lg"
+    sx={{
+      textAlign: "center",
+      backgroundColor: "#FFFFFF",
+      borderStyle: "dashed",
+      borderColor: "#E5E7EB"
+    }}
+  >
+    <Text size="sm" c="#64748B">
+      No tasks in this section yet.
+    </Text>
+  </Card>
+)}
 
   <Select
     placeholder="Sort by"
