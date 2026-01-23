@@ -1,60 +1,50 @@
-# 🧠 SmartTodo
+# Nucleus – Smart Task Dashboard
 
-SmartTodo is a full-stack task management application built with Java (Spring Boot) and React.
+Nucleus is a modern task management dashboard built using React, Mantine UI, Supabase, and Framer Motion.
 
-## 🚀 Vision
-A simple, powerful productivity system focused on speed, clarity, and execution.
+It allows users to:
 
-## 🧱 Architecture
-- Backend: Java + Spring Boot
-- Frontend: React (coming soon)
-- API-first design
-- Clean layered architecture
+- Add tasks with due dates
+- Categorize tasks (Today, Upcoming, Overdue, Completed)
+- Track task completion
+- View overdue warnings
+- Sort tasks (Due Date / Priority)
+- Experience smooth UI animations
 
-## 🗺 Planned Features
-- RESTful Task API
-- React frontend
-- Authentication
-- Persistent storage
-- Smart productivity insights
-## Roadmap
-- [x] Project initialization
-- [ ] Core task management logic
-- [ ] File persistence system
-- [ ] UI improvements
-- [ ] Testing & optimization
+---
 
-## API Health Check
+## 🛠 Tech Stack
 
-You can verify that the backend is running using:
+Frontend:
+- React
+- Mantine UI
+- Framer Motion
 
-GET /api/health
+Backend:
+- Supabase (Authentication + Database)
 
-Response:
-SmartTodo API is running 🚀
+---
 
-## Request Logging
+## ✨ Features
 
-All incoming HTTP requests are logged using a custom filter
-for easier debugging and monitoring during development.
-## UI Stabilization Update — Layout & Theme foundation completed
-## 🚀 Current Features
-- Material UI based modern interface
-- Sidebar navigation
-- Add & manage tasks
-- Clean responsive layout
+- Minimal professional dashboard UI
+- Overdue task detection
+- Animated task transitions
+- Task filtering by section
+- Sorting controls
+- Responsive layout
 
-## Project Update
+---
 
-- Improved frontend UI structure
-- Added task styling and layout refinements
+## 🚀 Future Improvements
 
-## Cloud Services Used
-- Supabase for authentication and database
-- Deployed with cloud-based backend services
-## Tech Stack
-- Frontend: React
-- Backend: Supabase
-- Database: PostgreSQL (Supabase)
+- Task priority color indicators
+- Search functionality
+- Drag-and-drop task reordering
+- Dark mode toggle
 
-📌 Project is under active development.
+---
+
+## 👨‍💻 Author
+
+Ayushman Tripathi
