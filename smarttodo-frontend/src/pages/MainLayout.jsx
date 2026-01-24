@@ -164,6 +164,18 @@ return {
 
   return true;
 });
+const sortedTasks = [...filteredTasks].sort((a, b) => {
+  if (sortBy === "date") {
+    return new Date(a.due_date) - new Date(b.due_date);
+  }
+
+  if (sortBy === "priority") {
+    const order = { High: 1, Medium: 2, Low: 3 };
+    return order[a.priority] - order[b.priority];
+  }
+
+  return 0;
+});
 
 
   return (
@@ -370,7 +382,8 @@ return {
 </Group>
 
 
-         {filteredTasks.map((task) => {
+         {sortedTasks.map((task) => {
+
   const meta = formatTaskDate(task.due_date);
 
   return (
