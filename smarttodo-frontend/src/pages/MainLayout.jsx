@@ -24,6 +24,8 @@ export default function MainLayout() {
   const [text, setText] = useState("");
   const [activeSection, setActiveSection] = useState("Today");
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [sortBy, setSortBy] = useState(null);
+
 const minimalCalendarStyles = {
   calendarHeader: { marginBottom: 6 },
   calendarHeaderLevel: { fontSize: 14, fontWeight: 500, color: "#0F172A" },
