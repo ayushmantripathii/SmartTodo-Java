@@ -357,11 +357,14 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
     radius="md"
     p="lg"
     sx={{
-      textAlign: "center",
-      backgroundColor: "#FFFFFF",
-      borderStyle: "dashed",
-      borderColor: "#E5E7EB"
-    }}
+  transition: "all 0.18s ease",
+  cursor: "pointer",
+  ":hover": {
+    transform: "translateY(-3px)",
+    boxShadow: "0 12px 28px rgba(0,0,0,0.08)"
+  }
+}}
+
   >
     <Text size="sm" c="#64748B">
       No tasks in this section yet.
