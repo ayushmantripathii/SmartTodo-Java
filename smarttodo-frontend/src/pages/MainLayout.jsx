@@ -307,25 +307,25 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
         </Group>
 
         <Stack spacing="sm">
-        {activeSection === "Overdue" && filteredTasks.length > 0 && (
-  <Card
-    withBorder
-    radius="md"
-    p="sm"
-    sx={{
-      backgroundColor: "#FEF2F2",
-      borderColor: "#FECACA",
-      color: "#991B1B",
-    }}
-  >
-    <Text size="sm" fw={600}>
-      ⚠️ You have {filteredTasks.length} overdue task{filteredTasks.length > 1 ? "s" : ""}
-    </Text>
-    <Text size="xs" c="#7F1D1D">
-      Let's get back on track.
-    </Text>
-  </Card>
-)}
+  {activeSection === "Overdue" && sortedTasks.length > 0 && (
+    <Card
+      withBorder
+      radius="md"
+      p="sm"
+      sx={{
+        backgroundColor: "#FEF2F2",
+        borderColor: "#FECACA",
+        color: "#991B1B",
+      }}
+    >
+      <Text size="sm" fw={600}>
+        ⚠️ You have {sortedTasks.length} overdue task{sortedTasks.length > 1 ? "s" : ""}
+      </Text>
+      <Text size="xs" c="#7F1D1D">
+        Let's get back on track.
+      </Text>
+    </Card>
+  )}
 <Group grow>
   <Card withBorder radius="md" p="sm">
     <Text size="xs" c="#64748B">Total Tasks</Text>
