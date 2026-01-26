@@ -190,34 +190,51 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
 
             <Divider />
 
-            {["Overdue","Today", "Upcoming", "Completed"].map((item) => {
-              const active = item === activeSection;
+           {["Overdue","Today", "Upcoming", "Completed"].map((item) => {
+  const active = item === activeSection;
 
-              return (
-                <Group
-                  key={item}
-                  px="sm"
-                  py={8}
-                  onClick={() => setActiveSection(item)}
-                  sx={{
-                    borderRadius: 8,
-                    cursor: "pointer",
-                    backgroundColor: active ? "rgba(45, 212, 191, 0.12)" : "transparent",
-                    borderLeft: active ? "4px solid #2DD4BF" : "4px solid transparent",
-                    transition: "all 0.2s ease",
-                    ":hover": { backgroundColor: "rgba(45, 212, 191, 0.08)" }
-                  }}
-                >
-                  <Text
-                    size="sm"
-                    fw={active ? 600 : 500}
-                    c={active ? "#0F172A" : "#64748B"}
-                  >
-                    {item}
-                  </Text>
-                </Group>
-              );
-            })}
+  const count =
+    item === "Overdue"
+      ? tasks.filter(t => !t.completed && t.due_date < todayStr).length
+      : item === "Today"
+      ? tasks.filter(t => !t.completed && t.due_date === todayStr).length
+      : item === "Upcoming"
+      ? tasks.filter(t => !t.completed && t.due_date > todayStr).length
+      : tasks.filter(t => t.completed).length;
+
+  return (
+    <Group
+      key={item}
+      position="apart"
+      px="sm"
+      py={8}
+      onClick={() => setActiveSection(item)}
+      sx={{
+        borderRadius: 8,
+        cursor: "pointer",
+        backgroundColor: active ? "rgba(45, 212, 191, 0.12)" : "transparent",
+        borderLeft: active ? "4px solid #2DD4BF" : "4px solid transparent",
+        transition: "all 0.2s ease",
+        ":hover": { backgroundColor: "rgba(45, 212, 191, 0.08)" }
+      }}
+    >
+      <Text
+        size="sm"
+        fw={active ? 600 : 500}
+        c={active ? "#0F172A" : "#64748B"}
+      >
+        {item}
+      </Text>
+
+      {count > 0 && (
+        <Text size="xs" fw={600} c="#64748B">
+          {count}
+        </Text>
+      )}
+    </Group>
+  );
+})}
+
           </Stack>
         </Navbar>
       }
