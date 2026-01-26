@@ -334,6 +334,7 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
         borderColor: "#FECACA",
         color: "#991B1B",
       }}
+      
     >
       <Text size="sm" fw={600}>
         ⚠️ You have {sortedTasks.length} overdue task{sortedTasks.length > 1 ? "s" : ""}
@@ -343,6 +344,27 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
       </Text>
     </Card>
   )}
+  <Group spacing="md">
+  <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
+    <Text size="xs" c="#64748B">Total</Text>
+    <Text fw={700}>{tasks.length}</Text>
+  </Card>
+
+  <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
+    <Text size="xs" c="#64748B">Pending</Text>
+    <Text fw={700}>
+      {tasks.filter(t => !t.completed).length}
+    </Text>
+  </Card>
+
+  <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
+    <Text size="xs" c="#64748B">Completed</Text>
+    <Text fw={700}>
+      {tasks.filter(t => t.completed).length}
+    </Text>
+  </Card>
+</Group>
+
 <Group grow>
   <Card withBorder radius="md" p="sm">
     <Text size="xs" c="#64748B">Total Tasks</Text>
