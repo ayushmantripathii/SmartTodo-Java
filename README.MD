@@ -1,50 +1,41 @@
-# Nucleus – Smart Task Dashboard
+# SmartTodo – Task Management Dashboard
 
-Nucleus is a modern task management dashboard built using React, Mantine UI, Supabase, and Framer Motion.
+SmartTodo is a full-stack task management application built with:
 
-It allows users to:
-
-- Add tasks with due dates
-- Categorize tasks (Today, Upcoming, Overdue, Completed)
-- Track task completion
-- View overdue warnings
-- Sort tasks (Due Date / Priority)
-- Experience smooth UI animations
-
----
-
-## 🛠 Tech Stack
-
-Frontend:
-- React
-- Mantine UI
-- Framer Motion
-
-Backend:
-- Supabase (Authentication + Database)
+- ⚛ React (Frontend)
+- 🎨 Mantine UI
+- 🔥 Supabase (Auth + Database)
+- ☕ Spring Boot (Backend – in progress)
 
 ---
 
 ## ✨ Features
 
-- Minimal professional dashboard UI
+- Add tasks with due dates
 - Overdue task detection
-- Animated task transitions
-- Task filtering by section
-- Sorting controls
-- Responsive layout
+- Task filtering (Today / Upcoming / Completed / Overdue)
+- Dynamic dashboard statistics
+- Sorting system (Due Date / Priority)
+- Clean animated UI
+
+---
+
+## 📊 Dashboard Overview
+
+The dashboard includes:
+
+- Total tasks counter
+- Pending tasks counter
+- Completed tasks counter
+- Overdue warning card
+- Sorting functionality
 
 ---
 
 ## 🚀 Future Improvements
 
-- Task priority color indicators
-- Search functionality
-- Drag-and-drop task reordering
+- Priority-based styling
+- Drag & drop tasks
+- Progress bar visualization
 - Dark mode toggle
-
----
-
-## 👨‍💻 Author
-
-Ayushman Tripathi
+- REST integration with Spring Boot backend
