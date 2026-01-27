@@ -330,10 +330,15 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
       radius="md"
       p="sm"
       sx={{
-        backgroundColor: "#FEF2F2",
-        borderColor: "#FECACA",
-        color: "#991B1B",
-      }}
+  transition: "all 0.2s ease",
+  borderColor: "#E5E7EB",
+  ":hover": {
+    transform: "translateY(-2px)",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
+    borderColor: "#6366F1"
+  }
+}}
+
       
     >
       <Text size="sm" fw={600}>
