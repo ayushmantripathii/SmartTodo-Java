@@ -39,3 +39,40 @@ The dashboard includes:
 - Progress bar visualization
 - Dark mode toggle
 - REST integration with Spring Boot backend
+
+✨ Recent Updates
+📅 Due Date System
+
+Tasks now support due dates.
+
+Smart labels display:
+
+Today
+
+Tomorrow
+
+Overdue
+
+Full formatted date for future tasks.
+
+📊 Dashboard Improvements
+
+Added task statistics summary:
+
+Total Tasks
+
+Pending Tasks
+
+Completed Tasks
+
+Section-based filtering:
+Overdue
+Today
+Upcoming
+Completed
+
+🎬 UI Enhancements
+
+Smooth task animations using Framer Motion
+Empty state handling for cleaner UX
+Improved task card hover interactions
