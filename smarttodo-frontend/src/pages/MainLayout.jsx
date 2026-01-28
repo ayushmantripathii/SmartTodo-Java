@@ -324,6 +324,26 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
         </Group>
 
         <Stack spacing="sm">
+           <Group spacing="md">
+    <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
+      <Text size="xs" c="#64748B">Total</Text>
+      <Text fw={700}>{tasks.length}</Text>
+    </Card>
+
+    <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
+      <Text size="xs" c="#64748B">Pending</Text>
+      <Text fw={700}>
+        {tasks.filter(t => !t.completed).length}
+      </Text>
+    </Card>
+
+    <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
+      <Text size="xs" c="#64748B">Completed</Text>
+      <Text fw={700}>
+        {tasks.filter(t => t.completed).length}
+      </Text>
+    </Card>
+  </Group>
   {activeSection === "Overdue" && sortedTasks.length > 0 && (
     <Card
       withBorder
