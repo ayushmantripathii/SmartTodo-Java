@@ -324,6 +324,10 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
         </Group>
 
         <Stack spacing="sm">
+          <Title order={6} c="#374151" fw={600} mt="md">
+  Overview
+</Title>
+
            <Group spacing="md">
     <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
       <Text size="xs" c="#64748B">Total</Text>
