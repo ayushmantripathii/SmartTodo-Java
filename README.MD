@@ -41,28 +41,20 @@ The dashboard includes:
 - REST integration with Spring Boot backend
 
 ✨ Recent Updates
+
 📅 Due Date System
-
 Tasks now support due dates.
-
 Smart labels display:
-
 Today
-
 Tomorrow
-
 Overdue
-
 Full formatted date for future tasks.
 
 📊 Dashboard Improvements
 
 Added task statistics summary:
-
 Total Tasks
-
 Pending Tasks
-
 Completed Tasks
 
 Section-based filtering:
@@ -76,3 +68,16 @@ Completed
 Smooth task animations using Framer Motion
 Empty state handling for cleaner UX
 Improved task card hover interactions
+
+## ✨ UX Improvements
+
+- Added dynamic loading state for smoother data fetching experience
+- Implemented animated task cards using Framer Motion
+- Improved empty state handling for better user guidance
+
+## 🧠 Architecture Notes
+
+- Frontend: React + Mantine UI
+- Backend: Spring Boot
+- Database & Auth: Supabase
+- Animations: Framer Motion
