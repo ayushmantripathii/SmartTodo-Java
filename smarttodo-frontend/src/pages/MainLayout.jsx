@@ -25,6 +25,8 @@ export default function MainLayout() {
   const [activeSection, setActiveSection] = useState("Today");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [sortBy, setSortBy] = useState(null);
+  const [loading, setLoading] = useState(true);
+
 
 const minimalCalendarStyles = {
   calendarHeader: { marginBottom: 6 },
@@ -101,13 +103,17 @@ return {
 };
 
   async function loadTasks() {
-    const { data } = await supabase
-      .from("tasks")
-      .select("*")
-      .order("created_at", { ascending: false });
+  setLoading(true);
 
-    setTasks(data || []);
-  }
+  const { data } = await supabase
+    .from("tasks")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  setTasks(data || []);
+  setLoading(false);
+}
+
 
   useEffect(() => {
     loadTasks();
@@ -324,6 +330,12 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
         </Group>
 
         <Stack spacing="sm">
+        {loading && (
+  <Text size="sm" c="#64748B">
+    Loading tasks...
+  </Text>
+)}
+
           <Title order={6} c="#374151" fw={600} mt="md">
   Overview
 </Title>
