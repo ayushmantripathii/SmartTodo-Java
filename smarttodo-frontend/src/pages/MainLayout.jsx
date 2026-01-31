@@ -385,47 +385,8 @@ const sortedTasks = [...filteredTasks].sort((a, b) => {
       </Text>
     </Card>
   )}
-  <Group spacing="md">
-  <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
-    <Text size="xs" c="#64748B">Total</Text>
-    <Text fw={700}>{tasks.length}</Text>
-  </Card>
+ 
 
-  <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
-    <Text size="xs" c="#64748B">Pending</Text>
-    <Text fw={700}>
-      {tasks.filter(t => !t.completed).length}
-    </Text>
-  </Card>
-
-  <Card withBorder radius="md" p="sm" sx={{ flex: 1 }}>
-    <Text size="xs" c="#64748B">Completed</Text>
-    <Text fw={700}>
-      {tasks.filter(t => t.completed).length}
-    </Text>
-  </Card>
-</Group>
-
-<Group grow>
-  <Card withBorder radius="md" p="sm">
-    <Text size="xs" c="#64748B">Total Tasks</Text>
-    <Text fw={700} size="lg">{tasks.length}</Text>
-  </Card>
-
-  <Card withBorder radius="md" p="sm">
-    <Text size="xs" c="#64748B">Overdue</Text>
-    <Text fw={700} size="lg" c="#EF4444">
-      {tasks.filter(t => !t.completed && t.due_date < todayStr).length}
-    </Text>
-  </Card>
-
-  <Card withBorder radius="md" p="sm">
-    <Text size="xs" c="#64748B">Completed</Text>
-    <Text fw={700} size="lg" c="#16A34A">
-      {tasks.filter(t => t.completed).length}
-    </Text>
-  </Card>
-</Group>
 
         <Group position="apart" align="center">
   <Title order={5} c="#d51a1a" fw={600}>
