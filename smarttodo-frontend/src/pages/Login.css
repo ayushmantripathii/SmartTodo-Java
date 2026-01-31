@@ -283,3 +283,72 @@ button {
   transform: translateY(-2px) scale(1.06);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
 }
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  background: radial-gradient(
+      circle at 20% 20%,
+      #bbf7d0 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      #fed7aa 0%,
+      transparent 40%
+    ),
+    linear-gradient(135deg, #ecfdf5 0%, #fff7ed 100%);
+}
+
+.liquid-bg {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #86efac 0%, transparent 60%);
+  filter: blur(140px);
+  top: -200px;
+  left: -200px;
+  animation: floatBlob 12s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.liquid-bg::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #fb923c 0%, transparent 60%);
+  filter: blur(140px);
+  bottom: -300px;
+  right: -300px;
+}
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+.glass-card {
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  padding: 40px 35px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+}
