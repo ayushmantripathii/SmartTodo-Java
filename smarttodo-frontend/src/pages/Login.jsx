@@ -47,9 +47,14 @@ export default function Login({ goToSignup }) {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="primary-btn" onClick={handleLogin} disabled={loading}>
-          {loading ? "Signing in..." : "Sign In"}
-        </button>
+       <button
+  className="primary-btn"
+  onClick={handleLogin}
+  disabled={loading}
+>
+  {loading ? "Signing in..." : "Sign In"}
+</button>
+
 
         <button className="secondary-btn" onClick={goToSignup}>
           Sign Up
