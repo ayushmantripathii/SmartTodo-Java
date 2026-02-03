@@ -46,6 +46,15 @@ export default function Login({ goToSignup }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <input
+  className="glow-input"
+  type="password"
+  placeholder="Password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  onKeyDown={handleKeyDown}
+/>
+
 
        <button
   className="primary-btn"
@@ -67,4 +76,9 @@ export default function Login({ goToSignup }) {
       </div>
     </div>
   );
+}
+function handleKeyDown(e) {
+  if (e.key === "Enter") {
+    handleLogin();
+  }
 }
