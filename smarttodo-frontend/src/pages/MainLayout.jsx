@@ -151,7 +151,15 @@ return {
     await supabase.from("tasks").delete().eq("id", id);
     loadTasks();
   }
+async function clearCompleted() {
+  await supabase
+    .from("tasks")
+    .delete()
+    .eq("completed", true);
 
+  loadTasks();
+}
+ 
   async function handleLogout() {
     await supabase.auth.signOut();
   }
